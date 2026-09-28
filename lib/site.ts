@@ -2,8 +2,7 @@ export const CONTACT_EMAIL = 'info@newvision.com'
 
 export const CONTACT_HREF = '#contact'
 
-export const CAREERS_EMAIL = 'careers@newvision.com'
-
+export const CAREERS_EMAIL = 'Mennanevision@gmail.com'
 export const CAREERS_HREF = `mailto:${CAREERS_EMAIL}?subject=${encodeURIComponent('Job application')}`
 
 export const NAV_LINKS = [
