@@ -1,8 +1,6 @@
 export const CONTACT_EMAIL = 'info@newvision.com'
 
-export const CONTACT_HREF = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(
-  'Customer Experience & Sales Intelligence enquiry',
-)}`
+export const CONTACT_HREF = '#contact'
 
 export const CAREERS_EMAIL = 'careers@newvision.com'
 
