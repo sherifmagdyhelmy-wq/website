@@ -1,13 +1,8 @@
 import { SiteHeader } from '@/components/site-header'
 import { Hero } from '@/components/hero'
-import { Problem } from '@/components/problem'
+import { About } from '@/components/about'
 import { Services } from '@/components/services'
-import { Process } from '@/components/process'
-import { SalesIntelligence } from '@/components/sales-intelligence'
-import { Deliverables } from '@/components/deliverables'
-import { Dashboard } from '@/components/dashboard'
-import { Quality } from '@/components/quality'
-import { CaseStudy } from '@/components/case-study'
+import { Approach } from '@/components/approach'
 import { Why } from '@/components/why'
 import { FinalCta, SiteFooter } from '@/components/final-cta'
 
@@ -17,14 +12,9 @@ export default function Page() {
       <SiteHeader />
       <main>
         <Hero />
-        <Problem />
+        <About />
         <Services />
-        <Process />
-        <SalesIntelligence />
-        <Deliverables />
-        <Dashboard />
-        <Quality />
-        <CaseStudy />
+        <Approach />
         <Why />
         <FinalCta />
       </main>
