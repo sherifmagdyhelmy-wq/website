@@ -1,50 +1,74 @@
+import { Gauge, MessageSquareQuote, Settings2, TrendingUp, ScanEye } from 'lucide-react'
+import { SectionHeading, Accent } from '@/components/section-heading'
+
 const services = [
   {
-    title: 'Architecture',
-    description:
-      'New builds, extensions and renovations shaped around site, climate and the way you live.',
+    icon: Gauge,
+    title: 'Customer Experience Measurement',
+    body: 'Continuous, structured measurement of how customers experience your service across branches, channels and teams.',
   },
   {
-    title: 'Interior design',
-    description:
-      'Full interior schemes — layout, joinery, lighting, materials and furniture — resolved as one.',
+    icon: MessageSquareQuote,
+    title: 'Voice of Customer',
+    body: 'The real words, reasons and expectations of your customers — captured, categorised and made usable.',
   },
   {
-    title: 'Hospitality',
-    description:
-      'Cafés, restaurants and boutique stays with a strong sense of place and a practical back of house.',
+    icon: Settings2,
+    title: 'Operational Insights',
+    body: 'Recurring frontline issues identified, traced to their source and escalated to the people who can fix them.',
   },
   {
-    title: 'Workplace',
-    description:
-      'Studios and offices that support focus, gathering and a culture people want to show up for.',
+    icon: TrendingUp,
+    title: 'Sales Intelligence',
+    body: 'Missed upselling, cross-selling and sales opportunities revealed through real customer interactions.',
+  },
+  {
+    icon: ScanEye,
+    title: 'Mystery Shopping',
+    body: 'Objective, standards-based evaluation of the frontline experience exactly as your customers receive it.',
   },
 ]
 
 export function Services() {
   return (
-    <section id="services" className="scroll-mt-16 py-20 md:py-28">
-      <div className="mx-auto flex max-w-6xl flex-col gap-12 px-5 md:flex-row md:gap-16 md:px-8">
-        <div className="md:w-1/3">
-          <p className="text-sm uppercase tracking-[0.2em] text-accent">Services</p>
-          <h2 className="mt-3 text-balance font-serif text-4xl tracking-tight md:text-5xl">
-            One studio, from first sketch to final detail.
-          </h2>
+    <section id="services" className="bg-ink py-24 md:py-32">
+      <div className="mx-auto max-w-7xl px-5 md:px-8">
+        <div className="flex flex-col justify-between gap-8 lg:flex-row lg:items-end">
+          <SectionHeading
+            index="02"
+            eyebrow="What We Do"
+            title={
+              <>
+                One partner for customer <Accent>and</Accent> sales intelligence.
+              </>
+            }
+          />
+          <p className="max-w-sm text-pretty leading-relaxed text-white/60">
+            An ongoing, outsourced intelligence function — not a call center, not a one-off survey.
+          </p>
         </div>
-        <ol className="flex-1 border-t border-border">
-          {services.map((service, index) => (
+
+        <ul className="mt-16 grid gap-px bg-white/10 sm:grid-cols-2 lg:grid-cols-5">
+          {services.map((s, i) => (
             <li
-              key={service.title}
-              className="flex flex-col gap-2 border-b border-border py-7 md:flex-row md:gap-10"
+              key={s.title}
+              className="group relative flex flex-col gap-10 bg-ink p-7 transition-colors hover:bg-ink-soft"
             >
-              <span className="font-serif text-lg text-muted-foreground md:w-12">
-                {String(index + 1).padStart(2, '0')}
-              </span>
-              <h3 className="font-serif text-2xl md:w-56 md:text-3xl">{service.title}</h3>
-              <p className="flex-1 leading-relaxed text-muted-foreground">{service.description}</p>
+              <div className="flex items-center justify-between">
+                <s.icon className="size-7 text-brand" aria-hidden="true" />
+                <span className="font-mono text-xs text-white/40">{`0${i + 1}`}</span>
+              </div>
+              <div className="flex flex-col gap-3">
+                <h3 className="text-xl font-bold leading-tight text-white">{s.title}</h3>
+                <p className="text-sm leading-relaxed text-white/60">{s.body}</p>
+              </div>
+              <span
+                className="absolute inset-x-0 bottom-0 h-0.5 origin-left scale-x-0 bg-brand transition-transform group-hover:scale-x-100"
+                aria-hidden="true"
+              />
             </li>
           ))}
-        </ol>
+        </ul>
       </div>
     </section>
   )
