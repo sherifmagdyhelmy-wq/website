@@ -1,29 +1,9 @@
-import { ArrowUpRight, Briefcase, MessageSquare } from 'lucide-react'
+import { Briefcase, MessageSquare } from 'lucide-react'
 import { Logo } from '@/components/logo'
 import { Reveal } from '@/components/reveal'
-import { CAREERS_EMAIL, CAREERS_HREF, CONTACT_EMAIL, CONTACT_HREF, NAV_LINKS } from '@/lib/site'
+import { ContactForm } from '@/components/contact-form'
+import { CAREERS_EMAIL, CAREERS_HREF, NAV_LINKS } from '@/lib/site'
 import { cn } from '@/lib/utils'
-
-const actions = [
-  {
-    href: CONTACT_HREF,
-    icon: MessageSquare,
-    eyebrow: 'For businesses',
-    title: 'Contact Us',
-    body: 'Talk to our team about your customers, branches and goals.',
-    meta: CONTACT_EMAIL,
-    primary: true,
-  },
-  {
-    href: CAREERS_HREF,
-    icon: Briefcase,
-    eyebrow: 'Careers',
-    title: 'Apply for a Job',
-    body: 'Join a team turning customer insight into business action.',
-    meta: CAREERS_EMAIL,
-    primary: false,
-  },
-]
 
 export function FinalCta() {
   return (
@@ -37,52 +17,44 @@ export function FinalCta() {
         </Reveal>
 
         <div className="mt-12 grid gap-3 md:mt-16 md:grid-cols-2">
-          {actions.map((a, i) => (
-            <Reveal key={a.title} delay={100 + i * 100}>
-              <a
-                href={a.href}
-                className={cn(
-                  'group relative flex h-full flex-col gap-10 overflow-hidden p-6 transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] hover:-translate-y-1 md:p-8',
-                  a.primary ? 'bg-brand text-ink' : 'border border-white/20 bg-ink-soft text-white hover:border-white/50',
-                )}
-              >
-                <span
-                  className={cn(
-                    'slash pointer-events-none absolute -right-16 top-0 h-full w-40 translate-x-10 opacity-0 transition-all duration-700 group-hover:translate-x-0 group-hover:opacity-100',
-                    a.primary ? 'bg-ink/10' : 'bg-brand/15',
-                  )}
-                  aria-hidden="true"
-                />
-                <div className="relative flex items-center justify-between">
-                  <span
-                    className={cn(
-                      'flex size-12 items-center justify-center',
-                      a.primary ? 'bg-ink text-brand' : 'bg-brand text-ink',
-                    )}
-                  >
-                    <a.icon className="size-5" aria-hidden="true" />
-                  </span>
-                  <span
-                    className={cn(
-                      'flex size-12 items-center justify-center border transition-all duration-300 group-hover:rotate-45',
-                      a.primary ? 'border-ink/30' : 'border-white/25',
-                    )}
-                    aria-hidden="true"
-                  >
-                    <ArrowUpRight className="size-5 -rotate-45 transition-transform duration-300 group-hover:rotate-0" />
-                  </span>
+          <Reveal delay={100}>
+            <div className="flex h-full flex-col gap-8 bg-brand p-6 text-ink md:p-8">
+              <div className="flex items-center gap-3">
+                <span className="flex size-12 items-center justify-center bg-ink text-brand">
+                  <MessageSquare className="size-5" aria-hidden="true" />
+                </span>
+                <div>
+                  <p className="font-mono text-xs uppercase tracking-[0.2em] text-ink/70">For businesses</p>
+                  <p className="text-2xl font-black tracking-tight">Contact Us</p>
                 </div>
-                <div className="relative flex flex-col gap-2">
-                  <p className={cn('font-mono text-xs uppercase tracking-[0.2em]', a.primary ? 'text-ink/70' : 'text-brand')}>
-                    {a.eyebrow}
-                  </p>
-                  <p className="text-3xl font-black tracking-tight md:text-4xl">{a.title}</p>
-                  <p className={cn('max-w-sm leading-relaxed', a.primary ? 'text-ink/75' : 'text-white/60')}>{a.body}</p>
-                  <p className={cn('mt-2 font-mono text-sm', a.primary ? 'text-ink' : 'text-white/80')}>{a.meta}</p>
-                </div>
-              </a>
-            </Reveal>
-          ))}
+              </div>
+              <ContactForm />
+            </div>
+          </Reveal>
+
+          <Reveal delay={200}>
+            <a
+              href={CAREERS_HREF}
+              className={cn(
+                'group relative flex h-full flex-col gap-10 overflow-hidden p-6 text-white transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] hover:-translate-y-1 md:p-8',
+                'border border-white/20 bg-ink-soft hover:border-white/50',
+              )}
+            >
+              <div className="relative flex items-center justify-between">
+                <span className="flex size-12 items-center justify-center bg-brand text-ink">
+                  <Briefcase className="size-5" aria-hidden="true" />
+                </span>
+              </div>
+              <div className="relative flex flex-col gap-2">
+                <p className="font-mono text-xs uppercase tracking-[0.2em] text-brand">Careers</p>
+                <p className="text-3xl font-black tracking-tight md:text-4xl">Apply for a Job</p>
+                <p className="max-w-sm leading-relaxed text-white/60">
+                  Join a team turning customer insight into business action.
+                </p>
+                <p className="mt-2 font-mono text-sm text-white/80">{CAREERS_EMAIL}</p>
+              </div>
+            </a>
+          </Reveal>
         </div>
       </div>
     </section>
